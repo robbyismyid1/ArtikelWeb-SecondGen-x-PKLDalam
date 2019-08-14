@@ -15,7 +15,6 @@ class CreateKompetensiKeahliansTable extends Migration
     {
         Schema::create('kompetensi_keahlians', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('kompetensi_kode')->unique();
             $table->unsignedBigInteger('bidang_id');
             $table->string('kompetensi_nama');
             $table->foreign('bidang_id')->references('id')->on('bidang_studis');

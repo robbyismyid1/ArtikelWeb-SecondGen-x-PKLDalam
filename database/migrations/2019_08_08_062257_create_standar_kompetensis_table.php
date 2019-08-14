@@ -15,7 +15,6 @@ class CreateStandarKompetensisTable extends Migration
     {
         Schema::create('standar_kompetensis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('sk_kode')->unique();
             $table->unsignedBigInteger('kompetensi_id');
             $table->string('sk_nama');
             $table->text('sk_kelas');

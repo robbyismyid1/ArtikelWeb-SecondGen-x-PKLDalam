@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,17 +33,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    @guest
-                    @role('admin')
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Menu admin</a>
-                    </li>
-                    @endrole
-                    @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Menu member</a>
-                    </li>
-                    @endguest
+                        
+                        @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.index') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('bidang-studi.index') }}">Bidang Studi</a>
+                        </li>
+                        @endrole
+
+                        @guest
+                        
+                        @else
+                         <li class="nav-item">
+                            <a class="nav-link" href="">Menu</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="">Menu </a>
+                       </li>
+                        @endguest                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,8 +92,18 @@
         </nav>
 
         <main class="py-4">
+            @include('layouts.flash')
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/select2.js') }}"></script>
+    <script src="{{ asset('js/select2.full.js') }}"></script>
+    <script src="{{ asset('js/select2.full.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+    </script>
 </body>
 </html>
