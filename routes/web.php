@@ -19,6 +19,8 @@ Auth::routes(['register' => false]);
 
 Route::get('/home',  'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
-    Route::resource('user', 'Back\UserController');
-    Route::resource('bidang-studi', 'Back\BidangstudiController');
+    Route::resource('user', 'UserController');
+    Route::resource('bidang-studi', 'BidangstudiController');
+    Route::resource('kompetensi-keahlian', 'KompetensikeahlianController');
+    Route::resource('guru', 'GuruController');
 });
